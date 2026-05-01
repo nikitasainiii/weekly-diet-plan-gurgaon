@@ -1,7 +1,8 @@
 🥗 My Weekly Diet Plan
 A personal diet tracker built for my own health goals — tailored to my lifestyle, local Gurgaon markets, and weekly routine.
+
 🌐 Live
-View Diet Plan
+
 ⚙️ Built With
 HTML · CSS · JavaScript
 
