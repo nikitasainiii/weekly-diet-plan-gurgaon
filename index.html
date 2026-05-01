@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Weekly Diet Plan - Gurgaon
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --bg-color: #0f172a;
+      --surface-color: #1e293b;
+      --surface-hover: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --glass-bg: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+      --info-green: rgba(16, 185, 129, 0.15);
+      --info-green-border: #10b981;
+      --info-amber: rgba(245, 158, 11, 0.15);
+      --info-amber-border: #f59e0b;
+      --info-teal: rgba(20, 184, 166, 0.15);
+      --info-teal-border: #14b8a6;
+      --info-blue: rgba(59, 130, 246, 0.15);
+      --info-blue-border: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-color);
+      background-image:
+        radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .header-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      background: linear-gradient(to right, #34d399, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .tab {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      cursor: pointer;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      color: var(--text-muted);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .tab:hover {
+      background: var(--surface-hover);
+      color: var(--text-main);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .panel {
+      display: none;
+      animation: slideUp 0.4s ease-out;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .day-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .day-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .day-header {
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--glass-border);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .day-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .day-kcal {
+      font-size: 13px;
+      color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .meal {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--glass-border);
+      transition: background 0.2s;
+    }
+
+    .meal:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .meal:last-child {
+      border-bottom: none;
+    }
+
+    .meal-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .meal-items {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    .meal-macros {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .macro-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .macro-pill {
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      border: 1px solid var(--glass-border);
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-box {
+      padding: 16px 20px;
+      border-left: 4px solid;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      font-size: 14px;
+      line-height: 1.6;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-box.green {
+      border-color: var(--info-green-border);
+      background: var(--info-green);
+      color: #a7f3d0;
+    }
+
+    .info-box.amber {
+      border-color: var(--info-amber-border);
+      background: var(--info-amber);
+      color: #fde68a;
+    }
+
+    .info-box.teal {
+      border-color: var(--info-teal-border);
+      background: var(--info-teal);
+      color: #99f6e4;
+    }
+
+    .info-box.blue {
+      border-color: var(--info-blue-border);
+      background: var(--info-blue);
+      color: #bfdbfe;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    th {
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      font-weight: 600;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-main);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-left: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge.fast {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .badge.gym {
+      background: rgba(16, 185, 129, 0.2);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .supp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 2rem;
+    }
+
+    .supp-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .supp-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), #3b82f6);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .supp-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .supp-card:hover::before {
+      opacity: 1;
+    }
+
+    .supp-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .supp-detail {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .action-btn {
+      margin-top: 1.5rem;
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    @media (max-width: 600px) {
+      .tabs {
+        gap: 6px;
+      }
+
+      .tab {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+
+      .day-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+ </head>
+ <body>
+  <div class="wrap">
+   <h2 class="header-title">
+    Weekly Diet Plan — Gurgaon, India
+   </h2>
+   <div class="tabs" id="tabs">
+    <button class="tab active" onclick="show('overview')">
+     Overview
+    </button>
+    <button class="tab" onclick="show('mon-wed')">
+     Mon-Wed
+    </button>
+    <button class="tab" onclick="show('thu')">
+     Thu
+     <span class="badge fast">
+      fast
+     </span>
+    </button>
+    <button class="tab" onclick="show('fri')">
+     Fri
+     <span class="badge fast">
+      fast
+     </span>
+    </button>
+    <button class="tab" onclick="show('sat')">
+     Sat
+    </button>
+    <button class="tab" onclick="show('sun')">
+     Sun
+    </button>
+    <button class="tab" onclick="show('supps')">
+     Supplements
+    </button>
+    <button class="tab" onclick="show('tips')">
+     Tips
+    </button>
+   </div>
+   <div class="panel active" id="panel-overview">
+    <div class="info-box teal">
+     <strong>
+      Calorie target:
+     </strong>
+     ~1,950–2,100 kcal/day (estimated TDEE ~1,650 + 350 kcal surplus) · Protein
+        80–90 g · Carbs 240–270 g · Fat 55–65 g
+    </div>
+    <p class="section-title">
+     Daily Macro &amp; Micro Targets
+    </p>
+    <div class="table-wrap">
+     <table>
+      <tr>
+       <th>
+        Nutrient
+       </th>
+       <th>
+        Daily target
+       </th>
+       <th>
+        Key sources
+       </th>
+      </tr>
+      <tr>
+       <td>
+        Protein
+       </td>
+       <td>
+        80–90 g
+       </td>
+       <td>
+        Eggs, paneer, dal, curd, oats, milk
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Carbohydrates
+       </td>
+       <td>
+        240–270 g
+       </td>
+       <td>
+        Rice, roti, oats, banana, sweet potato
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Fat
+       </td>
+       <td>
+        55–65 g
+       </td>
+       <td>
+        Ghee, peanut butter, nuts, sesame
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Calcium
+       </td>
+       <td>
+        1,000 mg
+       </td>
+       <td>
+        Milk, curd, paneer, sesame, ragi
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Iron
+       </td>
+       <td>
+        18 mg
+       </td>
+       <td>
+        Spinach, dal, rajma, jaggery, oats
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Vitamin C
+       </td>
+       <td>
+        65–75 mg
+       </td>
+       <td>
+        Amla, lemon, tomato, capsicum
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Vitamin D
+       </td>
+       <td>
+        600 IU
+       </td>
+       <td>
+        Egg yolk, fortified milk + sunlight
+       </td>
+      </tr>
+      <tr>
+       <td>
+        B12
+       </td>
+       <td>
+        2.4 µg
+       </td>
+       <td>
+        Eggs, milk, curd, fortified foods
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Zinc
+       </td>
+       <td>
+        8 mg
+       </td>
+       <td>
+        Oats, pumpkin seeds, rajma
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Magnesium
+       </td>
+       <td>
+        310 mg
+       </td>
+       <td>
+        Oats, spinach, banana, dark dal
+       </td>
+      </tr>
+     </table>
+    </div>
+    <div class="info-box amber">
+     <strong>
+      Potential gaps:
+     </strong>
+     Vitamin D, B12, Iron, Omega-3. Supplement protocol on the "Supplements" tab
+        covers all four.
+    </div>
+    <p class="section-title">
+     Weekly Structure
+    </p>
+    <div class="table-wrap">
+     <table>
+      <tr>
+       <th>
+        Day
+       </th>
+       <th>
+        Type
+       </th>
+       <th>
+        Target kcal
+       </th>
+      </tr>
+      <tr>
+       <td>
+        Mon–Wed
+       </td>
+       <td>
+        Normal gym day
+       </td>
+       <td>
+        ~2,000
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Thu
+       </td>
+       <td>
+        Gym + pre-fast loading (fast starts 6 PM)
+       </td>
+       <td>
+        ~1,900 before 6 PM
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Fri
+       </td>
+       <td>
+        Fasting (break at Sat 12 AM)
+       </td>
+       <td>
+        Light fluids only
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Sat
+       </td>
+       <td>
+        Post-fast recovery + gym
+       </td>
+       <td>
+        ~2,100
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Sun
+       </td>
+       <td>
+        Rest + normal intake
+       </td>
+       <td>
+        ~1,950
+       </td>
+      </tr>
+     </table>
+    </div>
+   </div>
+   <div class="panel" id="panel-mon-wed">
+    <div class="day-card">
+     <div class="day-header">
+      <span class="day-title">
+       Monday, Tuesday, Wednesday — Standard Gym Days
+      </span>
+      <span class="day-kcal">
+       ~2,130 kcal | 90g Protein | Target Surplus: +130 kcal
+      </span>
+     </div>
+     <div class="info-box green" style="margin: 16px 20px; width: auto;">
+      Focus: Balanced Surplus for Muscle Gain without excess fat storage.
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       05:30 AM (Wake-up)
+      </div>
+      <div class="meal-items">
+       1 glass warm water + 5g Soaked Methi Seeds + 5 soaked almonds + 2 walnuts
+      </div>
+      <div class="meal-macros">
+       ~100 kcal | P: 3g | C: 4g | F: 8g | Fe: 0.5mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       07:00 AM (Breakfast)
+      </div>
+      <div class="meal-items">
+       Oats (60g) + 250ml Full-fat milk + 1 Banana + 1 tsp Peanut Butter + 1 tsp Flaxseeds
+      </div>
+      <div class="meal-macros">
+       ~500 kcal | P: 15g | C: 72g | F: 18g | Ca: 350mg | Fe: 3mg | Mg: 110mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       10:00 AM (Mid-Morning)
+      </div>
+      <div class="meal-items">
+       2 Whole Boiled Eggs + 1 glass Buttermilk (200ml) with roasted jeera &amp; rock salt
+      </div>
+      <div class="meal-macros">
+       ~220 kcal | P: 16g | C: 6g | F: 14g | B12: 1.5µg | Ca: 150mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       01:00 PM (Lunch)
+      </div>
+      <div class="meal-items">
+       2 Whole wheat rotis + 30g Soya Chunks (dry wt. curry) + 1 katori Moong Dal + 100g Curd + Salad
+      </div>
+      <div class="meal-macros">
+       ~420 kcal | P: 28g | C: 61g | F: 5g | Fe: 6mg | Ca: 150mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       04:00 PM (Pre-Workout)
+      </div>
+      <div class="meal-items">
+       0.5 Banana + 2 slices Whole wheat bread + 1 tsp Peanut Butter + 200ml Milk
+      </div>
+      <div class="meal-macros">
+       ~340 kcal | P: 12g | C: 45g | F: 12g | Ca: 250mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       06:30–07:30 PM
+      </div>
+      <div class="meal-items">
+       GYM SESSION (Sip 700ml water)
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       08:00 PM (Post-Workout)
+      </div>
+      <div class="meal-items">
+       1 Whole Egg (Bhurji) + 0.75 cup Rice + 1 katori Rajma/Chana + Seasonal Sabzi + Lemon
+      </div>
+      <div class="meal-macros">
+       ~420 kcal | P: 16g | C: 62g | F: 8g | Fe: 4mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       09:30 PM (Bedtime)
+      </div>
+      <div class="meal-items">
+       1 glass Turmeric Milk (200ml)
+      </div>
+      <div class="meal-macros">
+       ~130 kcal | P: 7g | C: 11g | F: 5g | Ca: 200mg
+      </div>
+     </div>
+     <div class="table-wrap" style="margin-top: 2rem;">
+      <table>
+       <thead>
+        <tr>
+         <th colspan="3" style="text-align:center; background:var(--surface-color); color:var(--primary);">
+          Day Summary: Required vs. Actual
+         </th>
+        </tr>
+        <tr>
+         <th>
+          Nutrient
+         </th>
+         <th>
+          Required
+         </th>
+         <th>
+          Got (Approx)
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          Calories
+         </td>
+         <td>
+          ~2,000 kcal
+         </td>
+         <td>
+          2,130 kcal
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Protein
+         </td>
+         <td>
+          80-90g
+         </td>
+         <td>
+          97g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Carbohydrates
+         </td>
+         <td>
+          240-270g
+         </td>
+         <td>
+          261g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Fats
+         </td>
+         <td>
+          55-65g
+         </td>
+         <td>
+          70g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Iron
+         </td>
+         <td>
+          18mg
+         </td>
+         <td>
+          16.5mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Vitamin B12
+         </td>
+         <td>
+          2.4µg
+         </td>
+         <td>
+          2.8µg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Calcium
+         </td>
+         <td>
+          1,000mg
+         </td>
+         <td>
+          1,100mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Zinc
+         </td>
+         <td>
+          8mg
+         </td>
+         <td>
+          11mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Magnesium
+         </td>
+         <td>
+          310mg
+         </td>
+         <td>
+          340mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Vitamin C
+         </td>
+         <td>
+          65-75mg
+         </td>
+         <td>
+          70mg
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="panel" id="panel-thu">
+    <div class="day-card">
+     <div class="day-header">
+      <span class="day-title">
+       Thursday — The High-Calorie "Pre-Fast" Day
+      </span>
+      <span class="day-kcal">
+       ~2,150 kcal | 90g Protein
+      </span>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       05:30 AM
+      </div>
+      <div class="meal-items">
+       Warm water + 5 almonds + 2 walnuts + 1 date
+      </div>
+      <div class="meal-macros">
+       ~130 kcal | P: 3g | C: 10g | F: 9g
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       07:00 AM (Breakfast)
+      </div>
+      <div class="meal-items">
+       Oats (70g) + 250ml Full-fat milk + 2 Boiled Eggs + 1 Banana + 1 tsp Peanut Butter
+      </div>
+      <div class="meal-macros">
+       ~630 kcal | P: 26g | C: 82g | F: 22g
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       10:30 AM (Mid-Morning)
+      </div>
+      <div class="meal-items">
+       60g Paneer (Plain) + 1 Roti + 1 glass Milk
+      </div>
+      <div class="meal-macros">
+       ~400 kcal | P: 20g | C: 32g | F: 20g
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       01:30 PM (Large Lunch)
+      </div>
+      <div class="meal-items">
+       2 Rotis + 1.5 katori Dal + 100g Sabzi + 0.5 cup Rice + 1 katori Curd + 1 Sesame Ladoo
+      </div>
+      <div class="meal-macros">
+       ~650 kcal | P: 26g | C: 95g | F: 18g
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       04:30 PM (Pre-Fast Snack)
+      </div>
+      <div class="meal-items">
+       1 Whole Egg + 1 glass Full-fat milk + 2 dates + 5 cashews
+      </div>
+      <div class="meal-macros">
+       ~340 kcal | P: 14g | C: 35g | F: 16g
+      </div>
+     </div>
+     <div class="meal" style="background: rgba(245, 158, 11, 0.05); border-left: 3px solid #f59e0b;">
+      <div class="meal-label" style="color: #f59e0b;">
+       06:00 PM ONWARDS: STRICT FAST BEGINS
+      </div>
+      <div class="meal-items">
+       No food. Plain warm water only.
+      </div>
+     </div>
+     <div class="table-wrap" style="margin-top: 2rem;">
+      <table>
+       <thead>
+        <tr>
+         <th colspan="3" style="text-align:center; background:var(--surface-color); color:var(--primary);">
+          Day Summary: Required vs. Actual
+         </th>
+        </tr>
+        <tr>
+         <th>
+          Nutrient
+         </th>
+         <th>
+          Required
+         </th>
+         <th>
+          Got (Approx)
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          Calories
+         </td>
+         <td>
+          ~2,000 kcal
+         </td>
+         <td>
+          2,150 kcal
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Protein
+         </td>
+         <td>
+          80-90g
+         </td>
+         <td>
+          89g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Carbohydrates
+         </td>
+         <td>
+          240-270g
+         </td>
+         <td>
+          254g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Fats
+         </td>
+         <td>
+          55-65g
+         </td>
+         <td>
+          85g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Iron
+         </td>
+         <td>
+          18mg
+         </td>
+         <td>
+          16mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Vitamin B12
+         </td>
+         <td>
+          2.4µg
+         </td>
+         <td>
+          2.5µg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Calcium
+         </td>
+         <td>
+          1,000mg
+         </td>
+         <td>
+          1,250mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Zinc
+         </td>
+         <td>
+          8mg
+         </td>
+         <td>
+          10mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Magnesium
+         </td>
+         <td>
+          310mg
+         </td>
+         <td>
+          310mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Vitamin C
+         </td>
+         <td>
+          65-75mg
+         </td>
+         <td>
+          40mg
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="panel" id="panel-fri">
+    <div class="day-card">
+     <div class="day-header">
+      <span class="day-title">
+       Friday — Full Fasting Day
+      </span>
+      <span class="day-kcal">
+       No food
+      </span>
+     </div>
+     <div class="info-box amber" style="margin: 16px 20px; width: auto;">
+      Focus: Rest and Recovery.
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       All Day
+      </div>
+      <div class="meal-items">
+       No food.
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       Hydration
+      </div>
+      <div class="meal-items">
+       3L Plain warm water.
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       Permitted
+      </div>
+      <div class="meal-items">
+       2–3 cups Tulsi or Chamomile tea.
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       Electrolytes
+      </div>
+      <div class="meal-items">
+       Water with a pinch of Rock Salt.
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       Activity
+      </div>
+      <div class="meal-items">
+       No Gym. Complete rest.
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="panel" id="panel-sat">
+    <div class="day-card">
+     <div class="day-header">
+      <span class="day-title">
+       Saturday — Fast Break &amp; Refuel
+      </span>
+      <span class="day-kcal">
+       ~2,110 kcal | 91g Protein | Muscle Recovery Focus
+      </span>
+     </div>
+     <div class="info-box green" style="margin: 16px 20px; width: auto;">
+      Focus: Ending fast (Midnight) and returning to training.
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       12:01 AM
+      </div>
+      <div class="meal-items">
+       Warm water with 1 tsp Honey.
+      </div>
+      <div class="meal-macros">
+       ~20 kcal | C: 5g | Fast-break glucose trigger
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       05:30 AM
+      </div>
+      <div class="meal-items">
+       Warm water + 5 soaked almonds + 2 walnuts.
+      </div>
+      <div class="meal-macros">
+       ~85 kcal | P: 2g | C: 3g | F: 8g | Mg: 30mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       07:30 AM (Breakfast)
+      </div>
+      <div class="meal-items">
+       2 Whole Eggs + 2 Rotis + 150ml Milk + 1 Banana.
+      </div>
+      <div class="meal-macros">
+       ~450 kcal | P: 22g | C: 65g | F: 12g | B12: 1µg | Ca: 150mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       11:00 AM (Snack)
+      </div>
+      <div class="meal-items">
+       1 glass Milk + 20g Roasted Chana.
+      </div>
+      <div class="meal-macros">
+       ~250 kcal | P: 10g | C: 28g | F: 8g | Ca: 200mg | Fe: 2mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       01:30 PM (Lunch)
+      </div>
+      <div class="meal-items">
+       2 Rotis + 1 katori Dal + 30g Soya Chunks + 0.5 cup Rice + 100g Curd.
+      </div>
+      <div class="meal-macros">
+       ~520 kcal | P: 28g | C: 75g | F: 10g | Fe: 6mg | Ca: 150mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       04:30 PM (Pre-Workout)
+      </div>
+      <div class="meal-items">
+       1 Banana + 1 slice PB Bread.
+      </div>
+      <div class="meal-macros">
+       ~220 kcal | P: 6g | C: 40g | F: 6g | Mg: 40mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       06:30 PM
+      </div>
+      <div class="meal-items">
+       GYM SESSION. (Sip 700ml water)
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       08:30 PM (Dinner)
+      </div>
+      <div class="meal-items">
+       1 Whole Egg + 0.75 cup Rice + 1 katori Rajma + Sabzi.
+      </div>
+      <div class="meal-macros">
+       ~420 kcal | P: 16g | C: 62g | F: 8g | Fe: 4mg | Vit C: 15mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       09:30 PM (Bedtime)
+      </div>
+      <div class="meal-items">
+       1 glass Turmeric Milk (200ml).
+      </div>
+      <div class="meal-macros">
+       ~130 kcal | P: 7g | C: 11g | F: 5g | Ca: 200mg
+      </div>
+     </div>
+     <div class="table-wrap" style="margin-top: 2rem;">
+      <table>
+       <thead>
+        <tr>
+         <th colspan="3" style="text-align:center; background:var(--surface-color); color:var(--primary);">
+          Day Summary: Required vs. Actual
+         </th>
+        </tr>
+        <tr>
+         <th>
+          Nutrient
+         </th>
+         <th>
+          Required
+         </th>
+         <th>
+          Got (Approx)
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          Calories
+         </td>
+         <td>
+          ~2,000 kcal
+         </td>
+         <td>
+          2,115 kcal
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Protein
+         </td>
+         <td>
+          80-90g
+         </td>
+         <td>
+          91g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Carbohydrates
+         </td>
+         <td>
+          240-270g
+         </td>
+         <td>
+          284g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Fats
+         </td>
+         <td>
+          55-65g
+         </td>
+         <td>
+          62g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Iron
+         </td>
+         <td>
+          18mg
+         </td>
+         <td>
+          16mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Vitamin B12
+         </td>
+         <td>
+          2.4µg
+         </td>
+         <td>
+          2.2µg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Calcium
+         </td>
+         <td>
+          1,000mg
+         </td>
+         <td>
+          950mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Zinc
+         </td>
+         <td>
+          8mg
+         </td>
+         <td>
+          9mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Magnesium
+         </td>
+         <td>
+          310mg
+         </td>
+         <td>
+          290mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Vitamin C
+         </td>
+         <td>
+          65-75mg
+         </td>
+         <td>
+          35mg
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="panel" id="panel-sun">
+    <div class="day-card">
+     <div class="day-header">
+      <span class="day-title">
+       Sunday — Rest &amp; Preparation
+      </span>
+      <span class="day-kcal">
+       ~2,130 kcal | 90g Protein | Target Surplus: +130 kcal
+      </span>
+     </div>
+     <div class="info-box green" style="margin: 16px 20px; width: auto;">
+      Focus: Balanced Surplus for Muscle Gain without excess fat storage.
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       05:30 AM (Wake-up)
+      </div>
+      <div class="meal-items">
+       1 glass warm water + 5g Soaked Methi Seeds + 5 soaked almonds + 2 walnuts
+      </div>
+      <div class="meal-macros">
+       ~100 kcal | P: 3g | C: 4g | F: 8g | Fe: 0.5mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       07:00 AM (Breakfast)
+      </div>
+      <div class="meal-items">
+       Oats (60g) + 250ml Full-fat milk + 1 Banana + 1 tsp Peanut Butter + 1 tsp Flaxseeds
+      </div>
+      <div class="meal-macros">
+       ~500 kcal | P: 15g | C: 72g | F: 18g | Ca: 350mg | Fe: 3mg | Mg: 110mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       10:00 AM (Mid-Morning)
+      </div>
+      <div class="meal-items">
+       2 Whole Boiled Eggs + 1 glass Buttermilk (200ml) with roasted jeera &amp; rock salt
+      </div>
+      <div class="meal-macros">
+       ~220 kcal | P: 16g | C: 6g | F: 14g | B12: 1.5µg | Ca: 150mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       01:00 PM (Lunch)
+      </div>
+      <div class="meal-items">
+       2 Whole wheat rotis + 30g Soya Chunks (dry wt. curry) + 1 katori Moong Dal + 100g Curd + Salad
+      </div>
+      <div class="meal-macros">
+       ~420 kcal | P: 28g | C: 61g | F: 5g | Fe: 6mg | Ca: 150mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       04:00 PM (Pre-Workout)
+      </div>
+      <div class="meal-items">
+       0.5 Banana + 2 slices Whole wheat bread + 1 tsp Peanut Butter + 200ml Milk
+      </div>
+      <div class="meal-macros">
+       ~340 kcal | P: 12g | C: 45g | F: 12g | Ca: 250mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       06:30–07:30 PM
+      </div>
+      <div class="meal-items">
+       GYM SESSION (Sip 700ml water)
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       08:00 PM (Post-Workout)
+      </div>
+      <div class="meal-items">
+       1 Whole Egg (Bhurji) + 0.75 cup Rice + 1 katori Rajma/Chana + Seasonal Sabzi + Lemon
+      </div>
+      <div class="meal-macros">
+       ~420 kcal | P: 16g | C: 62g | F: 8g | Fe: 4mg
+      </div>
+     </div>
+     <div class="meal">
+      <div class="meal-label">
+       09:30 PM (Bedtime)
+      </div>
+      <div class="meal-items">
+       1 glass Turmeric Milk (200ml)
+      </div>
+      <div class="meal-macros">
+       ~130 kcal | P: 7g | C: 11g | F: 5g | Ca: 200mg
+      </div>
+     </div>
+     <div class="table-wrap" style="margin-top: 2rem;">
+      <table>
+       <thead>
+        <tr>
+         <th colspan="3" style="text-align:center; background:var(--surface-color); color:var(--primary);">
+          Day Summary: Required vs. Actual
+         </th>
+        </tr>
+        <tr>
+         <th>
+          Nutrient
+         </th>
+         <th>
+          Required
+         </th>
+         <th>
+          Got (Approx)
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          Calories
+         </td>
+         <td>
+          ~2,000 kcal
+         </td>
+         <td>
+          2,130 kcal
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Protein
+         </td>
+         <td>
+          80-90g
+         </td>
+         <td>
+          97g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Carbohydrates
+         </td>
+         <td>
+          240-270g
+         </td>
+         <td>
+          261g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Fats
+         </td>
+         <td>
+          55-65g
+         </td>
+         <td>
+          70g
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Iron
+         </td>
+         <td>
+          18mg
+         </td>
+         <td>
+          16.5mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Vitamin B12
+         </td>
+         <td>
+          2.4µg
+         </td>
+         <td>
+          2.8µg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Calcium
+         </td>
+         <td>
+          1,000mg
+         </td>
+         <td>
+          1,100mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Zinc
+         </td>
+         <td>
+          8mg
+         </td>
+         <td>
+          11mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Magnesium
+         </td>
+         <td>
+          310mg
+         </td>
+         <td>
+          340mg
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Vitamin C
+         </td>
+         <td>
+          65-75mg
+         </td>
+         <td>
+          70mg
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="panel" id="panel-supps">
+    <p class="section-title">
+     <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round">
+      </path>
+     </svg>
+     Essential Supplements
+    </p>
+    <div class="supp-grid">
+     <div class="supp-card">
+      <div class="supp-name">
+       Vitamin D3 + K2
+      </div>
+      <div class="supp-detail">
+       600–1,000 IU daily (RDA) · 2,000 IU if deficient · Take with breakfast (fat meal) · Critical: deficiency extremely common in India
+      </div>
+     </div>
+     <div class="supp-card">
+      <div class="supp-name">
+       Vitamin B12
+      </div>
+      <div class="supp-detail">
+       2.4 µg daily (RDA) · 500 µg common for maintenance · Morning with water · Essential for vegetarians
+      </div>
+     </div>
+     <div class="supp-card">
+      <div class="supp-name">
+       Iron (elemental)
+      </div>
+      <div class="supp-detail">
+       18 mg daily (RDA) · Take with Vit C (amla/lemon) on empty stomach · Do not take with milk or calcium
+      </div>
+     </div>
+     <div class="supp-card">
+      <div class="supp-name">
+       Omega-3 (DHA/EPA)
+      </div>
+      <div class="supp-detail">
+       250–500 mg daily · Take with dinner · Supports heart, brain, and joint health · Use algae-based for vegetarian
+      </div>
+     </div>
+     <div class="supp-card">
+      <div class="supp-name">
+       Zinc
+      </div>
+      <div class="supp-detail">
+       8 mg daily (RDA) · With food · Supports immunity + wound healing · Take separate from iron/calcium
+      </div>
+     </div>
+     <div class="supp-card">
+      <div class="supp-name">
+       Magnesium Glycinate
+      </div>
+      <div class="supp-detail">
+       310–320 mg daily (RDA) · Take at bedtime · Supports muscle recovery and sleep quality
+      </div>
+     </div>
+     <div class="supp-card">
+      <div class="supp-name">
+       Whey / Soy Protein
+      </div>
+      <div class="supp-detail">
+       20–25 g post-workout · Use only if protein target (90g) is not met via whole foods
+      </div>
+     </div>
+     <div class="supp-card">
+      <div class="supp-name">
+       Multivitamin (Women's)
+      </div>
+      <div class="supp-detail">
+       1 tablet with breakfast · Insurance against gaps · Ensure it covers 100% of most B-vitamins
+      </div>
+     </div>
+    </div>
+    <div class="info-box blue">
+     <strong>
+      Supplement timing note:
+     </strong>
+     Take iron at least 2 hours away from calcium supplements or dairy. B12 and D3 can be taken together at breakfast. Magnesium at night. Zinc with lunch or dinner.
+    </div>
+    <div class="info-box amber">
+     <strong>
+      During fasting (Thu 6 PM–Sat 12 AM):
+     </strong>
+     skip iron and zinc supplements. Continue D3, B12, and magnesium glycinate only if tolerated without food.
+    </div>
+   </div>
+   <div class="panel" id="panel-tips">
+    <p class="section-title">
+     <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round">
+      </path>
+     </svg>
+     Immunity &amp; Wellness
+    </p>
+    <div class="info-box green">
+     <strong>
+      Daily immunity stack:
+     </strong>
+     Turmeric milk at night · Amla (fresh or murabba — non-sour form) daily · 5 soaked almonds every morning · Tulsi leaves in warm water 2–3×/week
+    </div>
+    <div class="info-box teal">
+     <strong>
+      Hydration:
+     </strong>
+     2.5–3 L water daily · Electrolytes after gym (nimbu pani with rock salt, no soda) · ORS once a week if sweating heavily
+    </div>
+    <p class="section-title">
+     Budget Tips (Gurgaon Market)
+    </p>
+    <div class="table-wrap">
+     <table>
+      <tr>
+       <th>
+        Costly item
+       </th>
+       <th>
+        Budget swap
+       </th>
+       <th>
+        Notes
+       </th>
+      </tr>
+      <tr>
+       <td>
+        Expensive protein powder
+       </td>
+       <td>
+        Moong dal + curd + eggs
+       </td>
+       <td>
+        Same protein, fraction of cost
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Imported nuts
+       </td>
+       <td>
+        Local peanuts, chana
+       </td>
+       <td>
+        Peanuts = ~₹60/kg, excellent protein + fat
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Exotic veggies
+       </td>
+       <td>
+        Seasonal local sabzi
+       </td>
+       <td>
+        Buy at Sadar Bazar or sector mandis
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Paneer daily
+       </td>
+       <td>
+        Homemade paneer (2 L milk → ~400 g)
+       </td>
+       <td>
+        Saves ~60% vs packaged
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Almonds (expensive)
+       </td>
+       <td>
+        Pumpkin + sunflower seeds
+       </td>
+       <td>
+        Rich in zinc + magnesium
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Algae omega-3
+       </td>
+       <td>
+        Flaxseed powder (1 tsp/day)
+       </td>
+       <td>
+        ALA source, ₹80/250 g pack
+       </td>
+      </tr>
+     </table>
+    </div>
+    <p class="section-title">
+     Practical Reminders
+    </p>
+    <div class="info-box blue">
+     <ul style="list-style-position: inside; color: var(--text-main); font-size: 14px;">
+      <li>
+       <strong>
+        Pre-cook:
+       </strong>
+       Soak rajma/chana overnight; batch-cook dal 2× per week to save time.
+      </li>
+      <li>
+       <strong>
+        Post-workout window:
+       </strong>
+       Eat within 45–60 min after gym for muscle repair.
+      </li>
+      <li>
+       <strong>
+        Sleep:
+       </strong>
+       10–11 hrs is excellent. Ensure last meal is ≥1 hr before sleep.
+      </li>
+      <li>
+       <strong>
+        Weigh-in:
+       </strong>
+       Check weight weekly (same time, morning, after toilet) to track progress. Target +0.25–0.5 kg/month.
+      </li>
+     </ul>
+    </div>
+    <button class="action-btn" onclick="sendPrompt()">
+     <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round">
+      </path>
+     </svg>
+     Generate weekly grocery list with costs
+    </button>
+   </div>
+    <script>
+      function show(id) {
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        const panel = document.getElementById('panel-' + id);
+        if (panel) panel.classList.add('active');
+        document.querySelectorAll('.tab').forEach(t => {
+          if (t.getAttribute('onclick').includes("'" + id + "'")) t.classList.add('active');
+        });
+      }
+      function sendPrompt() {
+        const perfectPrompt = "Act as a local Gurgaon nutritionist and grocery expert. Based on a ~2000 kcal/day healthy weight gain diet plan that includes oats, full-fat milk, eggs, paneer, moong/toor dal, rajma, rice, whole wheat roti, peanut butter, seasonal vegetables (like palak, cucumber, tomato), sweet potato, bananas, and a fasting day on Friday, please generate a comprehensive 1-week grocery shopping list for a single person. Organize the list by categories (Dairy & Eggs, Produce, Pantry, Nuts & Seeds). Include estimated local prices in INR for Gurgaon markets (like Sadar Bazar or sector mandis vs quick-commerce like Blinkit/Zepto), and provide the total estimated weekly cost.";
+        const geminiWindow = window.open("https://gemini.google.com/app", "_blank");
+        navigator.clipboard.writeText(perfectPrompt).then(() => {
+          alert("✅ Perfect prompt copied to your clipboard!\\n\\nPaste it into the Gemini chat window we just opened.");
+        }).catch(err => {
+          alert("Please copy this prompt manually:\\n\\n" + perfectPrompt);
+        });
+      }
+    </script>
+  </div>
+ </body>
+</html>
