@@ -414,6 +414,229 @@
       box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
     }
 
+    .buy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff !important;
+      background: #f97316;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .buy-btn:hover {
+      background: #ea580c;
+      transform: translateY(-1px);
+    }
+
+    /* Tracker Styles */
+    .tracker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .tracker-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .tracker-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .water-container {
+      margin-bottom: 24px;
+    }
+
+    .water-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .creatine-water .progress-fill {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    }
+
+    .water-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-sm:hover {
+      background: var(--surface-hover);
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--glass-border);
+      cursor: pointer;
+    }
+
+    .checklist-item:last-child {
+      border-bottom: none;
+    }
+
+    .checklist-item input[type="checkbox"] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--primary);
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .checklist-item input[type="checkbox"]:checked {
+      background: var(--primary);
+    }
+
+    .checklist-item input[type="checkbox"]:checked::after {
+      content: '✓';
+      position: absolute;
+      color: white;
+      font-size: 12px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .checklist-item span {
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .checklist-item input[type="checkbox"]:checked + span {
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .weight-log-input {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .input-field {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      font-family: inherit;
+    }
+
+    .weight-history {
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 13px;
+    }
+
+    .weight-entry {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .bmi-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .notes-area {
+      width: 100%;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 16px;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 14px;
+      resize: none;
+      margin-top: 10px;
+    }
+
+    .auto-save-indicator {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 4px;
+    }
+
     @media (max-width: 600px) {
       .tabs {
         gap: 6px;
@@ -431,6 +654,10 @@
 
       .header-title {
         font-size: 1.5rem;
+      }
+
+      .tracker-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -470,6 +697,9 @@
     </button>
     <button class="tab" onclick="show('tips')">
      Tips
+    </button>
+    <button class="tab" onclick="show('tracker')">
+     Daily Tracker
     </button>
    </div>
    <div class="panel active" id="panel-overview">
@@ -1680,23 +1910,34 @@
        Vitamin D3 + K2
       </div>
       <div class="supp-detail">
-       600–1,000 IU daily (RDA) · 2,000 IU if deficient · Take with breakfast (fat meal) · Critical: deficiency extremely common in India
+       600–1,000 IU daily (RDA) · 2,000 IU if deficient · Take with breakfast (fat meal)
       </div>
+      <a href="https://amzn.in/d/0hITmNYQ" target="_blank" class="buy-btn">Buy on Amazon</a>
      </div>
      <div class="supp-card">
       <div class="supp-name">
        Vitamin B12
       </div>
       <div class="supp-detail">
-       2.4 µg daily (RDA) · 500 µg common for maintenance · Morning with water · Essential for vegetarians
+       2.4 µg daily (RDA) · 500 µg common for maintenance · Morning with water
       </div>
+      <a href="https://amzn.in/d/0aI8zihj" target="_blank" class="buy-btn">Buy on Amazon</a>
      </div>
      <div class="supp-card">
       <div class="supp-name">
        Iron (elemental)
       </div>
       <div class="supp-detail">
-       18 mg daily (RDA) · Take with Vit C (amla/lemon) on empty stomach · Do not take with milk or calcium
+       18 mg daily (RDA) · Take with Vit C on empty stomach · Do not take with milk/calcium
+      </div>
+      <a href="https://amzn.in/d/01XQNCpW" target="_blank" class="buy-btn">Buy on Amazon</a>
+     </div>
+     <div class="supp-card">
+      <div class="supp-name">
+       Zinc
+      </div>
+      <div class="supp-detail">
+       8 mg daily (RDA) · Supports immunity · <strong>Included in Iron Supplement</strong>
       </div>
      </div>
      <div class="supp-card">
@@ -1704,40 +1945,36 @@
        Omega-3 (DHA/EPA)
       </div>
       <div class="supp-detail">
-       250–500 mg daily · Take with dinner · Supports heart, brain, and joint health · Use algae-based for vegetarian
+       250–500 mg daily · Take with dinner · Supports heart, brain, and joint health
       </div>
-     </div>
-     <div class="supp-card">
-      <div class="supp-name">
-       Zinc
-      </div>
-      <div class="supp-detail">
-       8 mg daily (RDA) · With food · Supports immunity + wound healing · Take separate from iron/calcium
-      </div>
+      <a href="https://amzn.in/d/0eVbwjBb" target="_blank" class="buy-btn">Buy on Amazon</a>
      </div>
      <div class="supp-card">
       <div class="supp-name">
        Magnesium Glycinate
       </div>
       <div class="supp-detail">
-       310–320 mg daily (RDA) · Take at bedtime · Supports muscle recovery and sleep quality
+       310–320 mg daily (RDA) · Take at bedtime · Supports recovery and sleep
       </div>
+      <a href="https://amzn.in/d/05sZyboB" target="_blank" class="buy-btn">Buy on Amazon</a>
      </div>
      <div class="supp-card">
       <div class="supp-name">
-       Whey / Soy Protein
+       Whey Protein
       </div>
       <div class="supp-detail">
-       20–25 g post-workout · Use only if protein target (90g) is not met via whole foods
+       20–25 g post-workout · Essential for muscle repair and hit protein target
       </div>
+      <a href="https://amzn.in/d/07hN8ltV" target="_blank" class="buy-btn">Buy on Amazon</a>
      </div>
      <div class="supp-card">
       <div class="supp-name">
-       Multivitamin (Women's)
+       Creatine
       </div>
       <div class="supp-detail">
-       1 tablet with breakfast · Insurance against gaps · Ensure it covers 100% of most B-vitamins
+       3–5g daily · Take post-workout · Boosts strength and muscle volume
       </div>
+      <a href="https://amzn.in/d/08kORHWR" target="_blank" class="buy-btn">Buy on Amazon</a>
      </div>
     </div>
     <div class="info-box blue">
@@ -1895,8 +2132,143 @@
      </svg>
      Generate weekly grocery list with costs
     </button>
-   </div>
+    </div>
+    <div class="panel" id="panel-tracker">
+      <div class="info-box teal">
+        <strong>Daily Tracker:</strong> Track your habits, water, and weight. Data is saved locally in your browser.
+      </div>
+      
+      <div class="tracker-grid">
+        <!-- Water Intake -->
+        <div class="tracker-card">
+          <div class="tracker-title">
+            💧 Water Intake
+          </div>
+          <div class="water-container">
+            <div class="water-label">
+              <span>Baseline</span>
+              <span id="water-baseline-text">0.00L / 3.5L</span>
+            </div>
+            <div class="progress-bar">
+              <div id="water-baseline-fill" class="progress-fill"></div>
+            </div>
+          </div>
+          <div class="water-container creatine-water">
+            <div class="water-label">
+              <span>⚡ Extra (Creatine)</span>
+              <span id="water-extra-text">0.00L / 1.0L</span>
+            </div>
+            <div class="progress-bar">
+              <div id="water-extra-fill" class="progress-fill"></div>
+            </div>
+          </div>
+          <div class="water-controls">
+            <button class="btn-sm" onclick="addWater('baseline', 0.25)">+ 0.25L Baseline</button>
+            <button class="btn-sm" onclick="addWater('extra', 0.25)">+ 0.25L Extra</button>
+            <button class="btn-sm" onclick="resetWater()">Reset All</button>
+          </div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="tracker-card">
+          <div class="tracker-title">
+            ✅ Daily Checklist
+          </div>
+          <div id="checklist">
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="vit-d3-b12">
+              <span>Took B12 + D3 with breakfast</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="whey">
+              <span>Took Whey Protein (post-workout)</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="creatine">
+              <span>Took Creatine (post-workout)</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="zinc-iron">
+              <span>Took Iron + Zinc with meal</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="magnesium">
+              <span>Took Magnesium at bedtime</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="omega">
+              <span>Took Omega-3 with dinner</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="protein-target">
+              <span>Hit protein target (90g+)</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="gym">
+              <span>Completed gym session</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="sunlight">
+              <span>15 min morning sunlight</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" onchange="toggleCheck(this)" data-id="amla">
+              <span>Amla/Lemon with iron meal</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- BMI & Weight -->
+        <div class="tracker-card">
+          <div class="tracker-title">
+            📊 BMI & Progress
+          </div>
+          <div class="bmi-stats">
+            <div class="stat-box">
+              <div class="stat-label">Current Weight</div>
+              <div id="current-weight-val" class="stat-value">44 kg</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Current BMI</div>
+              <div id="current-bmi-val" class="stat-value">17.7</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Goal Weight</div>
+              <div class="stat-value">50 kg</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">To Gain</div>
+              <div id="to-gain-val" class="stat-value">6 kg</div>
+            </div>
+          </div>
+          <p style="font-size: 11px; color: var(--text-muted); margin-top: 12px; text-align: center;">
+            Goal: Reach BMI 20.2 (Healthy Range)
+          </p>
+          <hr style="border: none; border-top: 1px solid var(--glass-border); margin: 20px 0;">
+          <div class="tracker-title" style="font-size: 0.9rem; margin-bottom: 12px;">
+            📝 Weight Log
+          </div>
+          <div class="weight-log-input">
+            <input type="number" id="weight-input" step="0.1" class="input-field" placeholder="kg">
+            <button class="btn-sm" style="background: var(--primary); color: white;" onclick="logWeight()">Log</button>
+          </div>
+          <div id="weight-history" class="weight-history">
+            <!-- Entries here -->
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="tracker-card" style="grid-column: 1 / -1;">
+          <div class="tracker-title">
+            📝 Weekly Notes & Reflections
+          </div>
+          <textarea id="weekly-notes" class="notes-area" placeholder="Write your weekly reflections, how you're feeling, measurements, etc..." oninput="saveNotes()"></textarea>
+          <div class="auto-save-indicator">✓ Auto-saved to browser</div>
+        </div>
+      </div>
+    </div>
     <script>
+      // Navigation
       function show(id) {
         document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -1905,7 +2277,9 @@
         document.querySelectorAll('.tab').forEach(t => {
           if (t.getAttribute('onclick').includes("'" + id + "'")) t.classList.add('active');
         });
+        if (id === 'tracker') initTracker();
       }
+
       function sendPrompt() {
         const perfectPrompt = "Act as a local Gurgaon nutritionist and grocery expert. Based on a ~2000 kcal/day healthy weight gain diet plan that includes oats, full-fat milk, eggs, paneer, moong/toor dal, rajma, rice, whole wheat roti, peanut butter, seasonal vegetables (like palak, cucumber, tomato), sweet potato, bananas, and a fasting day on Friday, please generate a comprehensive 1-week grocery shopping list for a single person. Organize the list by categories (Dairy & Eggs, Produce, Pantry, Nuts & Seeds). Include estimated local prices in INR for Gurgaon markets (like Sadar Bazar or sector mandis vs quick-commerce like Blinkit/Zepto), and provide the total estimated weekly cost.";
         const geminiWindow = window.open("https://gemini.google.com/app", "_blank");
@@ -1915,6 +2289,105 @@
           alert("Please copy this prompt manually:\\n\\n" + perfectPrompt);
         });
       }
+
+      // Tracker Logic
+      const HEIGHT_M = 1.5748; // 5'2"
+      const GOAL_WEIGHT = 50;
+
+      let trackerData = {
+        water: { baseline: 0, extra: 0 },
+        checklist: {},
+        weightLog: [],
+        notes: ""
+      };
+
+      function initTracker() {
+        const saved = localStorage.getItem('diet_tracker_data');
+        if (saved) {
+          trackerData = JSON.parse(saved);
+        }
+        renderTracker();
+      }
+
+      function renderTracker() {
+        // Water
+        const baselineMax = 3.5;
+        const extraMax = 1.0;
+        
+        document.getElementById('water-baseline-text').innerText = `${trackerData.water.baseline.toFixed(2)}L / ${baselineMax}L`;
+        document.getElementById('water-baseline-fill').style.width = Math.min((trackerData.water.baseline / baselineMax) * 100, 100) + '%';
+        
+        document.getElementById('water-extra-text').innerText = `${trackerData.water.extra.toFixed(2)}L / ${extraMax}L`;
+        document.getElementById('water-extra-fill').style.width = Math.min((trackerData.water.extra / extraMax) * 100, 100) + '%';
+
+        // Checklist
+        document.querySelectorAll('#checklist input').forEach(cb => {
+          cb.checked = !!trackerData.checklist[cb.dataset.id];
+        });
+
+        // Weight & BMI
+        const currentWeight = trackerData.weightLog.length > 0 ? trackerData.weightLog[0].weight : 44;
+        const bmi = (currentWeight / (HEIGHT_M * HEIGHT_M)).toFixed(1);
+        const toGain = (GOAL_WEIGHT - currentWeight).toFixed(1);
+
+        document.getElementById('current-weight-val').innerText = currentWeight + ' kg';
+        document.getElementById('current-bmi-val').innerText = bmi;
+        document.getElementById('to-gain-val').innerText = (toGain > 0 ? toGain : 0) + ' kg';
+
+        // Weight History
+        const historyEl = document.getElementById('weight-history');
+        historyEl.innerHTML = trackerData.weightLog.map(entry => `
+          <div class="weight-entry">
+            <span>${entry.date}</span>
+            <strong>${entry.weight} kg</strong>
+          </div>
+        `).join('');
+
+        // Notes
+        document.getElementById('weekly-notes').value = trackerData.notes || "";
+      }
+
+      function addWater(type, amount) {
+        trackerData.water[type] += amount;
+        saveData();
+        renderTracker();
+      }
+
+      function resetWater() {
+        trackerData.water = { baseline: 0, extra: 0 };
+        saveData();
+        renderTracker();
+      }
+
+      function toggleCheck(el) {
+        trackerData.checklist[el.dataset.id] = el.checked;
+        saveData();
+      }
+
+      function logWeight() {
+        const input = document.getElementById('weight-input');
+        const weight = parseFloat(input.value);
+        if (weight > 0) {
+          const date = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short' });
+          trackerData.weightLog.unshift({ date, weight });
+          if (trackerData.weightLog.length > 10) trackerData.weightLog.pop();
+          input.value = '';
+          saveData();
+          renderTracker();
+        }
+      }
+
+      function saveNotes() {
+        trackerData.notes = document.getElementById('weekly-notes').value;
+        saveData();
+      }
+
+      function saveData() {
+        localStorage.setItem('diet_tracker_data', JSON.stringify(trackerData));
+      }
+
+      // Initialize on load
+      window.onload = initTracker;
     </script>
   </div>
  </body>
